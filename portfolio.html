@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jnvds Kushal - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --primary-color: #007acc;
+  --secondary-color: #00c6ff;
+  --text-color: #333;
+  --background-color: #f4f8fb;
+  --footer-bg: #f2f2f2;
+  --nav-link-color: #333;
+  --nav-link-hover: #007acc;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+/* Dark theme variables */
+body.dark-theme {
+  --primary-color: #9d4edd;
+  --secondary-color: #6a0dad;
+  --text-color: #f1f1f1;
+  --background-color: #1a1a2e;
+  --footer-bg: #111;
+  --nav-link-color: #f1f1f1;
+  --nav-link-hover: #9d4edd;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: var(--background-color);
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+header .logo {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--nav-link-color);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+nav ul li a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--nav-link-hover);
+}
+
+nav ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.hero .content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  animation: slideIn 1s ease-out;
+}
+
+.hero p {
+  font-size: 20px;
+  max-width: 800px;
+  margin: auto;
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+section h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.certificates {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 30px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+.certificates::-webkit-scrollbar {
+  height: 8px;
+}
+
+.certificates::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.certificates::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+.project-card, .certificate-card {
+  background: #fff;
+  flex: 0 0 280px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.project-card:hover, .certificate-card:hover {
+  transform: translateY(-10px);
+}
+
+.project-card img, .certificate-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.project-card .content, .certificate-card .content {
+  padding: 20px;
+}
+
+.project-card h3, .certificate-card h3 {
+  color: var(--primary-color);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.project-card p, .certificate-card p {
+  color: #555;
+  font-size: 15px;
+}
+
+.about p, .education p, .skills p {
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+  color: #555;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.edu-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.edu-item:hover {
+  transform: translateY(-5px);
+}
+
+.edu-item h3 {
+  color: var(--primary-color);
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.counters {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.counter {
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 200px;
+}
+
+.counter h3 {
+  font-size: 32px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.counter p {
+  color: #555;
+  font-size: 15px;
+}
+
+.progress-bar-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.progress-bar {
+  background: #1d293e;
+  padding: 20px;
+  border-radius: 10px;
+  color: var(--secondary-color);
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  width: 150px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.progress-bar:hover {
+  transform: scale(1.1);
+  background: var(--primary-color);
+  color: #fff;
+}
+
+/* Contact form styles remain untouched */
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.contact-form button {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.contact-form button:hover {
+  background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--footer-bg);
+  color: #777;
+  font-size: 14px;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Floating circular theme toggle button */
+#themeToggle {
+  position: fixed;
+  bottom: 15px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+#themeToggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.5);
+}
+
+.resume-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.resume-btn:hover {
+  background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 198, 255, 0.5);
+}
+/* Container for your intro text */
+.intro-text {
+  font-size: clamp(1.6rem, 5vw, 2.5rem); /* scales automatically with screen width */
+  font-weight: bold;
+  line-height: 1.3;
+  padding: 0 10px;
+  text-align: center;
+}
+
+/* Rotating name/phrases */
+#changing-text {
+  display: inline-block;
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
+  color: #0077ff; /* optional: highlight effect */
+}
+
+/* Ensure it fits well on smaller devices */
+@media (max-width: 768px) {
+  .intro-text {
+    font-size: clamp(1.4rem, 4.5vw, 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-text {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    padding: 0 8px;
+  }
+}
+/* Keep hero text above the waves */
+.hero .content {
+  position: relative;
+  z-index: 2;
+}
+
+/* SVG waves pinned to bottom */
+.waves {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 42vh;            /* wave height */
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Dark theme: make waves a touch brighter for contrast */
+body.dark-theme .waves {
+  opacity: 1;
+}
+
+/* Respect reduced-motion preferences: hide animation */
+@media (prefers-reduced-motion: reduce) {
+  .waves { display: none; }
+}
+/* Scroll to Top Button Styles */
+#scrollTopBtn {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 90px; /* Above theme button */
+  right: 10px;
+  z-index: 100;
+ background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+#scrollTopBtn:hover {
+  background-color: #555;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <header>
+    <div class="logo">JNVDS Kushal</div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="resume.pdf" download class="resume-btn">Download Resume</a>
+    <button class="theme-btn" id="themeToggle">Theme</button>
+    <button id="scrollTopBtn" title="Go to top">↑</button>
+
+
+  </header>
+ 
+<section class="hero" id="hero">
+  <div class="content">
+    <h1>Hello, I am <span id="changing-text">JNVDS Kushal</span></h1>
+  </div>
+</section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="eunoia.png" alt="Project 1">
+        <div class="content">
+          <h3>Eunoia</h3>
+          <p>A healthcare website for people suffering with mental health issues.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="medgo.png" alt="Project 2">
+        <div class="content">
+          <h3>MedGo</h3>
+          <p>Full-stack online consultation booking website with medicine delivery facilities.</p>
+        </div>
+      </div>
+       <div class="project-card">
+        <img src="admissions.png" alt="Project 3">
+        <div class="content">
+          <h3>Admissions Assistant</h3>
+          <p>A voice assistant for my University's admissions process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+     I'm a passionate and curious learner with a strong interest in AI, web development, and building smart applications that solve real-world problems. From chatbots to health tech and voice assistants, I enjoy turning ideas into useful digital solutions. I'm always eager to explore new tools and technologies, and I believe in learning by doing.
+    </p>
+    <div class="counters">
+      <div class="counter">
+        <h3 id="projectsCounter">0</h3>
+        <p>Internships</p>
+      </div>
+      <div class="counter">
+        <h3 id="certsCounter">0</h3>
+        <p>Hackathons attended</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="education">
+    <h2>Education</h2>
+    <div class="edu-list">
+      <div class="edu-item">
+        <h3>Bachelor of Technology (B.Tech)</h3>
+        <p>Currently pursuing 2nd year of B.Tech in Computer Science and Engineering with specialisation in Blockchain Technology at Malla Reddy University. Expected graduation: 2028.</p>
+      </div>
+      <div class="edu-item">
+        <h3>Intermediate (12th)</h3>
+        <p>Completed studies at St Peter's High School in MPC stream, graduated in 2022 with distinction.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <div class="progress-bar-container">
+      <div class="progress-bar">
+        <label>Python</label>
+      </div>
+      <div class="progress-bar">
+        <label>C++</label>
+      </div>
+       <div class="progress-bar">
+        <label>Java(Basic)</label>
+      </div>
+      <div class="progress-bar">
+        <label>HTML</label>
+      </div>
+      <div class="progress-bar">
+        <label>CSS</label>
+      </div>
+      <div class="progress-bar">
+        <label>JavaScript</label>
+      </div>
+      <div class="progress-bar">
+        <label>Django</label>
+      </div>
+      <div class="progress-bar">
+        <label>SQL</label>
+      </div>
+      <div class="progress-bar">
+        <label>React</label>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates" class="certificates">
+    <h2>Certificates</h2>
+    <div class="certificates">
+      <div class="certificate-card">
+        <img src="Infosys.jpg" alt="Certificate 1">
+        <div class="content">
+          <h3>Prompt Engineering - Infosys Springboard</h3>
+          <p>Learned how to craft precise, effective prompts for AI models, boosting my ability to develop intelligent and responsive AI systems</p>
+        </div>
+      </div>
+      <div class="certificate-card">
+        <img src="tailwindcss.jpg" alt="Certificate 2">
+        <div class="content">
+          <h3>Tailwind CSS Bootcamp - LetsUpgrade</h3>
+          <p>Mastered modern, utility-first web design techniques to build sleek, responsive user interfaces quickly and efficiently.</p>
+        </div>
+      </div>
+      <div class="certificate-card">
+        <img src="epitome.jpg" alt="Certificate 3">
+        <div class="content">
+          <h3> Epitome'25 Hackathon - Gokaraju Rangaraju Institute of Engineering and Technology </h3>
+          <p>Participated in a collaborative hackathon environment, working on innovative solutions and enhancing problem-solving skills.</p>
+        </div>
+      </div>
+      <div class="certificate-card">
+        <img src="be10x.jpg" alt="Certificate 3">
+        <div class="content">
+          <h3>Be10x AI Tools Workshop</h3>
+          <p>Gained hands-on experience with cutting-edge AI tools for automating workflows, enhancing creativity, and improving productivity in tech projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <form class="contact-form" action="https://formspree.io/f/myzjagay" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    © 2025 Jnvds Kushal. All rights reserved.
+  </footer>
+
+  <!-- Particles.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+ // Particles.js
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    color: { value: "#00c6ff" },
+    shape: { type: "circle" },
+    opacity: { value: 0.4 },
+    size: { value: 3 },
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#00c6ff",
+      opacity: 0.4,
+      width: 1
+    },
+    move: { enable: true, speed: 2 }
+  }
+});
+
+// Counters
+function animateValue(id, start, end, duration) {
+  let obj = document.getElementById(id);
+  let range = end - start;
+  let increment = end > start ? 1 : -1;
+  let stepTime = Math.abs(Math.floor(duration / range));
+  let current = start;
+  let timer = setInterval(function() {
+    current += increment;
+    obj.textContent = current;
+    if (current == end) clearInterval(timer);
+  }, stepTime);
+}
+
+window.onload = () => {
+  animateValue("projectsCounter", 0, 5, 5000);
+  animateValue("certsCounter", 0, 3, 5000);
+
+  // Initial theme icon
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.textContent = "☼";
+};
+
+let isDark = false;
+const themeToggle = document.getElementById('themeToggle');
+
+themeToggle.addEventListener('click', () => {
+  const root = document.documentElement;
+
+  if (isDark) {
+    // Switch to light theme
+    root.style.setProperty('--primary-color', '#007acc');
+    root.style.setProperty('--secondary-color', '#00c6ff');
+    root.style.setProperty('--text-color', '#333');
+    root.style.setProperty('--background-color', '#f4f8fb');
+    root.style.setProperty('--footer-bg', '#f2f2f2');
+    root.style.setProperty('--nav-link-color', '#333');
+    root.style.setProperty('--nav-link-hover', '#007acc');
+    themeToggle.textContent = "☼";
+  } else {
+    // Switch to dark theme
+    root.style.setProperty('--primary-color', '#6a0dad');
+    root.style.setProperty('--secondary-color', '#9d4edd');
+    root.style.setProperty('--text-color', '#f1f1f1');
+    root.style.setProperty('--background-color', '#1a1a2e');
+    root.style.setProperty('--footer-bg', '#111');
+    root.style.setProperty('--nav-link-color', '#f1f1f1');
+    root.style.setProperty('--nav-link-hover', '#9d4edd');
+    themeToggle.textContent = "☾";
+  }
+
+  isDark = !isDark;
+});
+
+const phrases = [
+    "JNVDS Kushal",
+    "Full Stack Developer",
+    "Creative Thinker",
+    "Problem Solver",
+    "Tech Enthusiast"
+  ];
+
+ let index = 0;
+  const textElement = document.getElementById("changing-text");
+
+  function changeText() {
+    // Fade out slowly
+    textElement.style.opacity = 0;
+
+    // After fade-out, change text and fade back in
+    setTimeout(() => {
+      index = (index + 1) % phrases.length;
+      textElement.textContent = phrases[index];
+      textElement.style.opacity = 1;
+    }, 2000); // match fade-out duration
+  }
+
+  // First call after initial delay so fade starts for all changes
+  setInterval(changeText, 5000);
+
+// Get the button
+let scrollTopBtn = document.getElementById("scrollTopBtn");
+
+// Show button when scrolling down 200px
+window.addEventListener("scroll", function () {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    scrollTopBtn.style.display = "block";
+  } else {
+    scrollTopBtn.style.display = "none";
+  }
+});
+
+// Scroll to top when clicked
+scrollTopBtn.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+</script>
+</body>
+</html>
